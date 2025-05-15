@@ -1,6 +1,6 @@
 plugins {
     /** KSP COMPILER **/
-    alias(libs.plugins.ksp.compiler) apply false
+    alias(libs.plugins.ksp.compiler)
 
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -23,7 +23,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -43,7 +43,9 @@ android {
 }
 
 dependencies {
-
+    // KSP COMPILER
+    ksp(libs.room.compiler)
+    // Implementation: Android And Compose
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -52,11 +54,25 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    // ROOM
+    implementation(libs.room.ktx)
+    implementation(libs.room.paging)
+    implementation(libs.room.testing)
+    // Koin Implementation
+    implementation(libs.koin.compose)
+    // Test Implementation
     testImplementation(libs.junit)
+    // Android Test Implementation
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    // Debug Implementation
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // Testing Implementation
+    testImplementation(libs.junit)
+
+
+
 }
