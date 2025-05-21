@@ -60,6 +60,11 @@ dependencies {
     implementation(libs.room.testing)
     // Koin Implementation
     implementation(libs.koin.compose)
+    // Retrofit Implementation
+    implementation(libs.retrofit.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
+    implementation(libs.google.accompanist.system.ui.controller)
     // Test Implementation
     testImplementation(libs.junit)
     // Android Test Implementation
